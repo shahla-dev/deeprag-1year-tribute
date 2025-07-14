@@ -1,0 +1,431 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0f5;
+  color: #333;
+  text-align: center;
+}
+
+/* ---------- intro-screen ------------ */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter-text {
+  font-size: 2.8em;
+  color: #ff85a2;
+  font-family: 'Playfair Display', serif;
+  opacity: 0;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+.counter-text {
+  font-size: 2.8em;
+  color: #ff85a2;
+  font-family: 'Playfair Display', serif;
+  opacity: 0;
+  animation: fadeInOut 2s ease-in-out forwards; /* ← Just 2 seconds total */
+}
+
+
+
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: floatUp 8s linear infinite;
+  opacity: 0.7;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes floatUp {
+  0% {
+    bottom: -20px;
+    opacity: 0.5;
+    transform: translateX(0) scale(0.6) rotate(45deg);
+  }
+  100% {
+    bottom: 100%;
+    transform: translateX(-50px) scale(1) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+
+/* -----------main content ----------------- */
+.hero {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  padding: 40px 10px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 3em;
+  color: #800040;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 1.2em;
+  color: #4d004d;
+}
+
+.gallery h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #cc0066;
+}
+
+/* ✅ Horizontal Scroll Gallery Layout */
+.scroll-gallery-wrapper {
+  position: relative;
+  max-width: 900px;
+  margin: auto;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.images {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 10px 20px; 
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory
+}
+
+.images::-webkit-scrollbar {
+  display: none;
+}
+
+/* ✅ Image Card (Polaroid style) */
+.gallery .item {
+  flex: 0 0 260px;
+  scroll-snap-align: center; 
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.gallery .item:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.gallery .item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.gallery .item p {
+  font-family: 'Courier New', monospace;
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: #5e004e;
+}
+
+/* ✅ Arrows */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  color: #ffffff;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50%;
+  font-size: 1.2em;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px #770303;
+}
+
+.scroll-btn:hover {
+  background: #ffb1d6;
+}
+
+.scroll-btn.left {
+  left: -10px;
+}
+
+.scroll-btn.right {
+  right: -10px;
+}
+
+
+/* -------flower ------ */
+.flower-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.flower {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall-flower linear infinite;
+}
+
+@keyframes fall-flower {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+
+/* -------- message ----------- */
+.message {
+  background-color: #ffe6eb;
+  padding: 40px 20px;
+  margin-top: 50px;
+}
+
+.dedication {
+  background: #fff8fc;
+  padding: 50px 20px;
+  max-width: 800px;
+  margin: auto;
+ font-family: 'Playfair Display', serif;
+  font-size: 1em;
+  line-height: 1.8;
+  color: #5c003c;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  margin-top: 60px;
+}
+
+.dedication h2 {
+  color: #c71585;
+  font-size: 1.8em;
+  margin-bottom: 25px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.dedication strong {
+  color: #800040;
+  font-weight: bold;
+}
+
+
+.message p {
+  font-size: 1.1em;
+  color: #4d004d;
+  line-height: 1.6;
+}
+
+footer {
+  padding: 20px;
+  background-color: #ffd6e8;
+  color: #800040;
+  font-size: 0.9em;
+}
+
+
+
+/* --- SHARE BUTTONS --- */
+.share {
+  text-align: center;
+  padding: 40px 20px;
+  background: #ffe0f0;
+}
+
+.share-buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 25px;
+  background: #ff4f93;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.share-buttons a:hover {
+  background: #c6286e;
+}
+
+/* --- FANS MESSAGES --- */
+.fans-messages {
+  background: #fff8f8;
+  padding: 40px 20px;
+  text-align: center;
+  font-style: italic;
+}
+
+.fans-messages .quotes {
+  max-width: 600px;
+  margin: auto;
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.7;
+}
+
+/* ----------- Music */
+.music-controls {
+  text-align: center;
+  margin-top: 20px;
+  padding-bottom: 30px;
+}
+
+.music-controls button {
+  background-color: #ff4f93;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 5px;
+  transition: background 0.3s ease;
+}
+
+.music-controls button:hover {
+  background-color: #c6286e;
+}
+
+
+
+
+/* ---------------- Media-query ------------------ */
+/* ---------------- Media-query max-width(768px)------------------ */
+@media (max-width: 768px) {
+  .images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .images {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- Media-query max-width(480px)------------------ */
+@media (max-width: 480px) {
+  /* Hero title and subtitle */
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+
+  /* Polaroid image card */
+  .gallery .item {
+    flex: 0 0 200px;
+    padding: 10px;
+  }
+
+  .gallery .item img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .gallery .item p {
+    font-size: 0.85em;
+  }
+
+  /* Scroll buttons (smaller size) */
+  .scroll-btn {
+    font-size: 1em;
+    padding: 8px 10px;
+  }
+
+  .share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .share-buttons a {
+    padding: 8px 15px;
+    font-size: 0.85em;
+    border-radius: 20px;
+  }
+
+  footer {
+  font-size: 0.8em;
+}
+}
